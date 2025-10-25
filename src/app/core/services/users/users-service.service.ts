@@ -1,8 +1,9 @@
 import { Users } from './../../data/UsersList';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { GlobalService } from '../global-service/global-service.service';
 import { User } from '../../models/User';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -20,38 +21,41 @@ export class UsersService {
 
   /**
    * @param _globalService GlobalService
+   * @param platformId Object
    */
   constructor(
-    private _globalService: GlobalService
-  ) {
-  }
+    private _globalService: GlobalService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   /*public registration(model): Observable<any> {
     return this._httpClient.post(HttpClientService.USERS_CONTROLLER, model, null, false, true);
   }*/
 
-  /**
+    /**
    * Save user to local storage.
    * 
    * @param user string
    * @returns void
    */
   public saveUser(user: string): void {
-    if (user) {
-      localStorage.setItem('user', user);
+    if (isPlatformBrowser(this.platformId) && user) {
+      localStorage.setItem('token', user);
       this._globalService.resetUserData();
     }
   }
 
-  /**
+    /**
    * Login method.
    * 
    * @param credentials any
    * @returns string|null
    */
   public login(credentials: any): string | null {
-    const index = Users.findIndex(item => item.Email === credentials.email || item.Password === credentials.password);
-    if(index === -1) {
+    const index = Users.findIndex(item =>
+      item.Email === credentials.email || item.Password === credentials.password
+    );
+    if (index === -1) {
       return null;
     }
 
@@ -65,8 +69,10 @@ export class UsersService {
   /**
    * Logout method.
    */
-  logout() {
-    localStorage.removeItem('user');
+  public logout(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
   }
 
   /**
@@ -74,20 +80,21 @@ export class UsersService {
    * 
    * @returns boolean
    */
-  isLoggedIn() {
-    const token: string | null = localStorage.getItem('user');
-    if (token != null) {
-      return true;
+  public isLoggedIn(): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('token');
     }
-
     return false;
   }
 
   /**
    * Get token from local storage.
    */
-  getToken() {
-    return localStorage.getItem('token');
+  public getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
 
   /**

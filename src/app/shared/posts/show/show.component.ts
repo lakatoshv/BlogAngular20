@@ -59,7 +59,7 @@ export class ShowComponent implements OnInit {
    * @inheritdoc
    */
   ngOnInit() {
-    var postIdStr = this._generalService.getRouteParam('post-id', this._activatedRoute);
+    var postIdStr = this._generalService.getRouteParam('postId', this._activatedRoute);
     if(postIdStr) {
       this.postId = parseInt(postIdStr, undefined);
     }
@@ -105,7 +105,7 @@ export class ShowComponent implements OnInit {
    */
   public deleteAction(): void {
     if (this.loggedIn && this.post?.Author?.Id === this.user?.Id) {
-      if(this.postId) {
+      if(this.postId !== undefined) {
         this._postsService.deletePost(this.postId);
         this._customToastrService.displaySuccessMessage(Messages.AUTHORIZED_SUCCESSFULLY);
       }
@@ -117,7 +117,7 @@ export class ShowComponent implements OnInit {
    * Get posts.
    */
   private _getPost(): void {
-    if(this.postId){
+    if(this.postId !== undefined){
       this.post = this._postsService.getPost(this.postId);
     }
   }
@@ -129,7 +129,7 @@ export class ShowComponent implements OnInit {
     this.loggedIn = this._usersService.isLoggedIn();
     if (this.loggedIn) {
       this._globalService.resetUserData();
-      if(this._globalService._currentUser) {
+      if(this._globalService._currentUser !== undefined) {
         this.user = this._globalService._currentUser;
       }
     }

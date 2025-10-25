@@ -131,7 +131,7 @@ export class MyPostsComponent implements OnInit {
       this._userId = this.user?.Id;
       this.isCurrentUserPosts = true;
     } else {
-      const userIdStr = this._globalService.getRouteParam('user-id', this._activatedRoute);
+      const userIdStr = this._globalService.getRouteParam('userId', this._activatedRoute);
       if(userIdStr){
         this._userId = parseInt(userIdStr, undefined);
         this.isCurrentUserPosts = false;
@@ -141,7 +141,7 @@ export class MyPostsComponent implements OnInit {
 
     this._postsService.postChanged.subscribe(
       () => {
-        if(this._userId) {
+        if(this._userId !== undefined) {
           this.posts = this._postsService.getUserPosts(this._userId, null, [this._searchFilter]);
           this.pageInfo.TotalItems = this.paginate.length;
         }
@@ -196,7 +196,7 @@ export class MyPostsComponent implements OnInit {
    * @param search string
    */
   public search(search: string): void {
-    if(this._userId) {
+    if(this._userId !== undefined) {
       this.posts = this._postsService.getUserPosts(this._userId, search, [this._searchFilter]);
     }
   }
@@ -212,7 +212,7 @@ export class MyPostsComponent implements OnInit {
    * Get all posts.
    */
   private _getPosts(): void {
-    if(this._userId) {
+    if(this._userId !== undefined) {
       this.posts = this._postsService.getUserPosts(this._userId, null, [this._searchFilter]);
     }
     this.pageInfo.TotalItems = this.posts.length;

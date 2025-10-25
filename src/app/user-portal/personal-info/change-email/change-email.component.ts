@@ -57,7 +57,7 @@ export class ChangeEmailComponent implements OnInit {
     this.isLoggedIn = this._usersService.isLoggedIn();
     if (this._usersService.isLoggedIn()) {
       this._globalService.resetUserData();
-      if(this._globalService._currentUser) {
+      if(this._globalService._currentUser !== undefined) {
         this.user = this._globalService._currentUser;
       }
       this._setFormData();
@@ -72,7 +72,7 @@ export class ChangeEmailComponent implements OnInit {
    * @param profileModel any
    */
   edit(profileModel: any): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.Email = profileModel.email;
       this._globalService._currentUser.EmailConfirmed = false;
     }
@@ -84,7 +84,7 @@ export class ChangeEmailComponent implements OnInit {
    * Confirm email.
    */
   public confirmEmail(): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.EmailConfirmed = true;
     }
     

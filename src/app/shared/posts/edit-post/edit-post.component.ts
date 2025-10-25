@@ -146,11 +146,11 @@ export class EditPostComponent implements OnInit {
       this.post.ImageUrl = post['ImageUrl'];
       this.post.CreatedAt = new Date();
 
-      if(this.user) {
+      if(this.user !== undefined) {
         this.post.AuthorId = this.user.Id;
       }
       
-      if(this._postId) {
+      if(this._postId !== undefined) {
         this._postsService.editPost(this._postId, this.post);
       }
       this._customToastrService.displaySuccessMessage(Messages.POST_EDITED_SUCCESSFULLY);
@@ -230,7 +230,7 @@ export class EditPostComponent implements OnInit {
    * Get post.
    */
   private _getPost(): void {
-    if(this._postId){
+    if(this._postId !== undefined){
       this.post = this._postsService.getPost(this._postId);
     }
     
@@ -277,7 +277,7 @@ export class EditPostComponent implements OnInit {
     this.action = 'add';
     this.selectedTag['value'] = '';
     this.selectedTag['id'] = null;
-    if(this.tagInput) {
+    if(this.tagInput !== undefined) {
       this.tagInput.nativeElement.value = '';
     }
   }

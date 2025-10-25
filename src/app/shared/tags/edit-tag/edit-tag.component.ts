@@ -107,7 +107,7 @@ export class EditTagComponent implements OnInit {
    * Get tag by id.
    */
   private _getTag(): void {
-    if(this._tagId) {
+    if(this._tagId !== undefined) {
       this.tag = this._tagsService.getTag(this._tagId);
     }
     

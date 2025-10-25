@@ -90,7 +90,7 @@ export class CommentsListComponent implements OnInit {
     }
     this._commentsService.commentChanged.subscribe(
       () => {
-        if(this.postId) {
+        if(this.postId !== undefined) {
           this.comments = this._commentsService.getCommentsByPostId(this.postId);
           this.pageInfo.totalItems = this.comments.length;
           this.isLoadEdit = false;
@@ -145,7 +145,7 @@ export class CommentsListComponent implements OnInit {
    */
   private _getCommentsForCurrentPost(): void {
     this.users = Users;
-    if(this.postId) {
+    if(this.postId !== undefined) {
       this.comments = this._commentsService.getCommentsByPostId(this.postId);
       this.pageInfo.totalItems = this.comments.length;
     }

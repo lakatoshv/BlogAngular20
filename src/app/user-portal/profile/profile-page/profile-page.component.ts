@@ -74,7 +74,7 @@ export class ProfilePageComponent implements OnInit {
    * @inheritdoc
    */
   public ngOnInit() {
-    const profileIdStr = this._generalService.getRouteParam('profile-id', this._activatedRoute);
+    const profileIdStr = this._generalService.getRouteParam('profileId', this._activatedRoute);
     if(profileIdStr) {
       this._userId = parseInt(profileIdStr, undefined);
     }
@@ -136,7 +136,7 @@ export class ProfilePageComponent implements OnInit {
    * Confirm phone number.
    */
   public confirmPhoneNumber(): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.PhoneNumberConfirmed = true;
       this._usersService.saveUser(JSON.stringify(this._globalService._currentUser));
       this._customToastrService.displaySuccessMessage(Messages.PHONE_NUMBER_VERIFIED_SUCCESSFULLY);
@@ -147,7 +147,7 @@ export class ProfilePageComponent implements OnInit {
    * Confirm email.
    */
   public confirmEmail(): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.EmailConfirmed = true;
       this._usersService.saveUser(JSON.stringify(this._globalService._currentUser));
       this._customToastrService.displaySuccessMessage(Messages.EMAIL_VERIFIED_SUCCESSFULLY);

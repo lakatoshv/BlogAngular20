@@ -58,7 +58,7 @@ export class ChangePhoneNumberComponent implements OnInit {
     if (this._usersService.isLoggedIn()) {
       this._globalService.resetUserData();
 
-      if(this._globalService._currentUser) {
+      if(this._globalService._currentUser !== undefined) {
         this.user = this._globalService._currentUser;
       }
 
@@ -74,7 +74,7 @@ export class ChangePhoneNumberComponent implements OnInit {
    * @param profileModel any
    */
   edit(profileModel: any): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.PhoneNumber = profileModel.phoneNumber;
       this._globalService._currentUser.PhoneNumberConfirmed = false;
       this._usersService.saveUser(JSON.stringify(this._globalService._currentUser));
@@ -86,7 +86,7 @@ export class ChangePhoneNumberComponent implements OnInit {
    * Confirm phone number.
    */
   public confirmPhoneNumber(): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.PhoneNumberConfirmed = true;
       this._usersService.saveUser(JSON.stringify(this._globalService._currentUser));
       this._customToastrService.displaySuccessMessage(Messages.PHONE_NUMBER_VERIFIED_SUCCESSFULLY);

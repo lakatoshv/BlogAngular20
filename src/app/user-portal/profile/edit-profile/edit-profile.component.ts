@@ -58,7 +58,7 @@ export class EditProfileComponent implements OnInit {
     if (this._usersService.isLoggedIn()) {
       this._globalService.resetUserData();
 
-      if(this._globalService._currentUser) {
+      if(this._globalService._currentUser !== undefined) {
         this.user = this._globalService._currentUser;
       }
       this._setFormData();
@@ -73,7 +73,7 @@ export class EditProfileComponent implements OnInit {
    * @param profileModel any
    */
   edit(profileModel: any): void {
-    if(this._globalService._currentUser) {
+    if(this._globalService._currentUser !== undefined) {
       this._globalService._currentUser.UserName = profileModel.firstName + ' ' + profileModel.lastName;
       this._globalService._currentUser.FirstName = profileModel.firstName;
       this._globalService._currentUser.LastName = profileModel.lastName;

@@ -57,7 +57,7 @@ export class ChangePasswordComponent implements OnInit {
     this.isLoggedIn = this._usersService.isLoggedIn();
     if (this._usersService.isLoggedIn()) {
       this._globalService.resetUserData();
-      if(this._globalService._currentUser) {
+      if(this._globalService._currentUser !== undefined) {
         this.user = this._globalService._currentUser;
       }
     } else {

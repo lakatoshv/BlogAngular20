@@ -1,5 +1,4 @@
 import { Category } from './Category';
-import { Categories } from './../data/CategoriesList';
 import { Tag } from './Tag';
 import { User } from './User';
 

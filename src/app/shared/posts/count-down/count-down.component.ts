@@ -1,12 +1,13 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-count-down',
   templateUrl: './count-down.component.html',
-  styleUrls: ['./count-down.component.css']
+  styleUrls: ['./count-down.component.css'],
+  standalone: false
 })
 export class CountDownComponent implements OnInit, OnDestroy {
   

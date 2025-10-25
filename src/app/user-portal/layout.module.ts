@@ -6,10 +6,9 @@ import { LayoutComponentComponent } from './layout-component/layout-component.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ProfileModule } from './profile/profile.module';
-import { RegistrationComponent } from './user/registration/registration.component';
-import { AuthorizationComponent } from './user/authorization/authorization.component';
 import { ErrorsModule } from '../shared/errors/errors.module';
 import { DefaultPagesModule } from './default-pages/default-pages.module';
+import { UserModule } from './user/user.module';
 // import { SharedModule } from "@app/shared";
 
 @NgModule({
@@ -21,12 +20,11 @@ import { DefaultPagesModule } from './default-pages/default-pages.module';
     ProfileModule,
     PersonalInfoModule,
     ErrorsModule,
-    DefaultPagesModule
+    DefaultPagesModule,
+    UserModule
   ],
   declarations: [
-    LayoutComponentComponent,
-    RegistrationComponent,
-    AuthorizationComponent,
+    LayoutComponentComponent
   ],
 })
 export class LayoutModule { }

@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AddTagComponent
   },
   {
-    path: 'tags/edit/:post-id',
+    path: 'tags/edit/:postId',
     component: EditTagComponent
   },
 ];

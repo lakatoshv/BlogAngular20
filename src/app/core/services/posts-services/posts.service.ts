@@ -146,7 +146,7 @@ export class PostsService {
    * 
    * @returns Post
    */
-  public getPost(id: number): Post {
+  public getPost(id: number): Post | undefined {
     const post = this._posts[id];
     post.TagsList = [];
     if (post.TagsListIds !== undefined) {

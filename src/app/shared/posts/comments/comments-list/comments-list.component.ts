@@ -1,17 +1,18 @@
 import { CommentsService } from './../../../../core/services/posts-services/comments.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Comment } from 'src/app/core/models/Comment';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { User } from 'src/app/core/models/User';
-import { Users } from 'src/app/core/data/UsersList';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { Comment } from './../../../../core/models/Comment';
+import { UsersService } from './../../../../core/services/users/users-service.service';
+import { GlobalService } from './../../../../core/services/global-service/global-service.service';
+import { User } from './../../../../core/models/User';
+import { Users } from './../../../../core/data/UsersList';
+import { Messages } from './../../../../core/data/Mesages';
+import { CustomToastrService } from './../../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-comments-list',
   templateUrl: './comments-list.component.html',
-  styleUrls: ['./comments-list.component.scss']
+  styleUrls: ['./comments-list.component.scss'],
+  standalone: false
 })
 export class CommentsListComponent implements OnInit {
   /**

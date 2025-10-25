@@ -1,19 +1,19 @@
 import { CommentsService } from './../../../../core/services/posts-services/comments.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommentForm } from 'src/app/core/forms/posts/CommentForm';
-
+import { CommentForm } from './../../../../core/forms/posts/CommentForm';
 import { Comment } from '../../../../core/models/Comment';
-import { User } from 'src/app/core/models/User';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
-import { Messages } from 'src/app/core/data/Mesages';
+import { User } from './../../../../core/models/User';
+import { UsersService } from './../../../../core/services/users/users-service.service';
+import { GlobalService } from './../../../../core/services/global-service/global-service.service';
+import { CustomToastrService } from './../../../../core/services/custom-toastr.service';
+import { Messages } from './../../../../core/data/Mesages';
 
 @Component({
   selector: 'app-edit-comment',
   templateUrl: './edit-comment.component.html',
-  styleUrls: ['./edit-comment.component.scss']
+  styleUrls: ['./edit-comment.component.scss'],
+  standalone: false
 })
 export class EditCommentComponent implements OnInit {
   /**

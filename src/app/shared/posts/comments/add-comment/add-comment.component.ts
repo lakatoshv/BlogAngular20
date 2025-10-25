@@ -1,17 +1,17 @@
 import { CommentsService } from './../../../../core/services/posts-services/comments.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommentForm } from 'src/app/core/forms/posts/CommentForm';
-
+import { CommentForm } from './../../../../core/forms/posts/CommentForm';
 import { Comment } from '../../../../core/models/Comment';
-import { User } from 'src/app/core/models/User';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
-import { Messages } from 'src/app/core/data/Mesages';
+import { User } from './../../../../core/models/User';
+import { CustomToastrService } from './../../../../core/services/custom-toastr.service';
+import { Messages } from './../../../../core/data/Mesages';
 
 @Component({
   selector: 'app-add-comment',
   templateUrl: './add-comment.component.html',
-  styleUrls: ['./add-comment.component.scss']
+  styleUrls: ['./add-comment.component.scss'],
+  standalone: false
 })
 export class AddCommentComponent implements OnInit {
   /**

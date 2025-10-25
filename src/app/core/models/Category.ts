@@ -1,4 +1,4 @@
-import { Post } from 'src/app/core/models/Post';
+import { Post } from './../../core/models/Post';
 /**
  * Category model.
  */

@@ -1,5 +1,5 @@
 import { Posts } from './../../data/PostsList';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
+import { UsersService } from './../../../core/services/users/users-service.service';
 import { Comment } from '../../models/Comment';
 import { Comments } from '../../data/CommentsList';
 import { Injectable, EventEmitter } from '@angular/core';
@@ -123,7 +123,7 @@ export class CommentsService {
    * @param postId number
    */
   public deleteCommentsByPostId(postId: number): void {
-    const comments = this._comments.filter(comment => comment.PostId === postId).forEach(comment => {
+    this._comments.filter(comment => comment.PostId === postId).forEach(comment => {
       this._comments.splice(comment.Id, 1);
     });
     this.commentChanged.emit(true);

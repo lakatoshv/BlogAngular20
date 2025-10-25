@@ -1,17 +1,18 @@
 import { Router } from '@angular/router';
-import { Posts } from 'src/app/core/data/PostsList';
+import { Posts } from './../../../core/data/PostsList';
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/core/models/Post';
-import { Users } from 'src/app/core/data/UsersList';
-import { Comments } from 'src/app/core/data/CommentsList';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
-import { PageInfo } from 'src/app/core/models/PageInfo';
+import { Post } from './../../../core/models/Post';
+import { Users } from './../../../core/data/UsersList';
+import { Comments } from './../../../core/data/CommentsList';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
+import { PageInfo } from './../../../core/models/PageInfo';
 
 @Component({
   selector: 'app-posts-table',
   templateUrl: './posts-table.component.html',
-  styleUrls: ['./posts-table.component.css']
+  styleUrls: ['./posts-table.component.css'],
+  standalone: false
 })
 export class PostsTableComponent implements OnInit {
   /**
@@ -63,7 +64,7 @@ export class PostsTableComponent implements OnInit {
     const index = this.posts.findIndex(x => x.Id === postId);
     if (index > -1) {
       this.posts.splice(index, 1);
-      const comments = Comments.filter(comment => comment.PostId === postId).forEach(comment => {
+      Comments.filter(comment => comment.PostId === postId).forEach(comment => {
         Comments.splice(comment.Id, 1);
       });
       this._customToastrService.displaySuccessMessage(Messages.POST_DELETED_SUCCESSFULLY);
@@ -84,7 +85,7 @@ export class PostsTableComponent implements OnInit {
    * Get all posts
    */
   private _getPosts() {
-    const posts = Posts.forEach(post => {
+    Posts.forEach(post => {
       if(post.AuthorId) {
         post.Author = Users[post.AuthorId];
       }

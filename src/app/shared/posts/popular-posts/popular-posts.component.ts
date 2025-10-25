@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/core/models/Post';
-import { PostsService } from 'src/app/core/services/posts-services/posts.service';
+import { Post } from './../../../core/models/Post';
+import { PostsService } from './../../../core/services/posts-services/posts.service';
 
 @Component({
   selector: 'app-popular-posts',
   templateUrl: './popular-posts.component.html',
-  styleUrls: ['./popular-posts.component.css']
+  styleUrls: ['./popular-posts.component.css'],
+  standalone: false
 })
 export class PopularPostsComponent implements OnInit {
   /**

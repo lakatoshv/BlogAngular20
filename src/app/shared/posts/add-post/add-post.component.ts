@@ -5,19 +5,20 @@ import { FormGroup } from '@angular/forms';
 import { PostForm } from '../../../core/forms/posts/PostForm';
 import { Post } from '../../../core/models/Post';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { User } from 'src/app/core/models/User';
-import { TinyMCEOptionsObject } from 'src/app/core/models/TinyMCEOptionsObject';
-import { TinyMCEOptions } from 'src/app/core/data/TinyMCEOptions';
-import { Tag } from 'src/app/core/models/Tag';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { GlobalService } from './../../../core/services/global-service/global-service.service';
+import { User } from './../../../core/models/User';
+import { TinyMCEOptionsObject } from './../../../core/models/TinyMCEOptionsObject';
+import { TinyMCEOptions } from './../../../core/data/TinyMCEOptions';
+import { Tag } from './../../../core/models/Tag';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css']
+  styleUrls: ['./add-post.component.css'],
+  standalone: false
 })
 export class AddPostComponent implements OnInit {
   /**

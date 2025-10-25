@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Tag } from 'src/app/core/models/Tag';
-import { TagsService } from 'src/app/core/services/posts-services/tags.service';
+import { Tag } from './../../../core/models/Tag';
+import { TagsService } from './../../../core/services/posts-services/tags.service';
 
 @Component({
   selector: 'app-popular-tags',
   templateUrl: './popular-tags.component.html',
-  styleUrls: ['./popular-tags.component.css']
+  styleUrls: ['./popular-tags.component.css'],
+  standalone: false
 })
 export class PopularTagsComponent implements OnInit {
   /**

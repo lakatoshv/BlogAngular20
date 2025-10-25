@@ -3,4 +3,6 @@
   <option value="0">Підтверджено</option>
   <option value="1">Непідтверджено</option>
 </select>
-<button *ngIf="changed" (click)="change()" class="btn btn-sm btn-success btn-@item.Post.Id">Зберегти</button>
+@if (changed) {
+  <button (click)="change()" class="btn btn-sm btn-success btn-@item.Post.Id">Зберегти</button>
+}

@@ -2,17 +2,18 @@ import { GlobalService } from './../../../core/services/global-service/global-se
 import { UsersService } from './../../../core/services/users/users-service.service';
 import { CommentsService } from './../../../core/services/posts-services/comments.service';
 import { Component, OnInit } from '@angular/core';
-import { Comment } from 'src/app/core/models/Comment';
-import { User } from 'src/app/core/models/User';
-import { GeneralServiceService } from 'src/app/core';
+import { Comment } from './../../../core/models/Comment';
+import { User } from './../../../core/models/User';
+import { GeneralServiceService } from './../../../core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-comments-table',
   templateUrl: './comments-table.component.html',
-  styleUrls: ['./comments-table.component.css']
+  styleUrls: ['./comments-table.component.css'],
+  standalone: false
 })
 export class CommentsTableComponent implements OnInit {
 /**
@@ -54,14 +55,14 @@ export class CommentsTableComponent implements OnInit {
    * @inheritdoc
    */
   ngOnInit() {
-    const postIdStr = this._generalService.getRouteParam('post-id', this._activatedRoute);
+    const postIdStr = this._generalService.getRouteParam('postId', this._activatedRoute);
     if(postIdStr) {
       this.postId = parseInt(postIdStr, undefined);
     }
 
     this._activatedRoute.params.subscribe(
       (params: Params) => {
-        this.postId = parseInt(params['post-id'], undefined);
+        this.postId = parseInt(params['postId'], undefined);
         this._checkIfUserIsLoggedIn();
 
         this._getComments(this.postId);
@@ -70,7 +71,7 @@ export class CommentsTableComponent implements OnInit {
 
     this._checkIfUserIsLoggedIn();
 
-    if(this.postId) {
+    if(this.postId !== undefined) {
       this._getComments(this.postId);
     }
 

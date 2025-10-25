@@ -537,3 +537,5 @@
 /node_modules/@angular-devkit
 /node_modules/@assemblyscript/loader
 /node_modules
+/.angular/cache/20.0.1/BlogAngular
+/dist/BlogAngular

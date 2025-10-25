@@ -1,18 +1,19 @@
 import { PostsService } from './../../../core/services/posts-services/posts.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { GeneralServiceService } from 'src/app/core';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { User } from 'src/app/core/models/User';
-import { Post } from 'src/app/core/models/Post';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { GeneralServiceService } from './../../../core';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { GlobalService } from './../../../core/services/global-service/global-service.service';
+import { User } from './../../../core/models/User';
+import { Post } from './../../../core/models/Post';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
-  styleUrls: ['./show.component.scss']
+  styleUrls: ['./show.component.scss'],
+  standalone: false
 })
 export class ShowComponent implements OnInit {
   /**
@@ -65,7 +66,7 @@ export class ShowComponent implements OnInit {
 
     this._activatedRoute.params.subscribe(
       (params: Params) => {
-        this.postId = parseInt(params['post-id'], undefined);
+        this.postId = parseInt(params['postId'], undefined);
         this._checkIfUserIsLoggedIn();
 
         this._getPost();

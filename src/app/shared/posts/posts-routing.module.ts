@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { ShowComponent } from './show/show.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
-import { AuthGuard } from 'src/app/core/guards/AuthGuard';
+import { AuthGuard } from './../../core/guards/AuthGuard';
 
 const routes: Routes = [
   {
@@ -15,7 +14,7 @@ const routes: Routes = [
     component: PostsListComponent
   },
   {
-    path: 'posts/:search-filter',
+    path: 'posts/:searchFilter',
     component: PostsListComponent
   },
   {
@@ -24,12 +23,12 @@ const routes: Routes = [
     component: AddPostComponent
   },
   {
-    path: 'post/edit/:post-id',
+    path: 'post/edit/:postId',
     canActivate: [AuthGuard],
     component: EditPostComponent
   },
   {
-    path: 'post/:post-id',
+    path: 'post/:postId',
     component: ShowComponent
   },
   {
@@ -38,7 +37,7 @@ const routes: Routes = [
     component: MyPostsComponent
   },
   {
-    path: 'my-posts/:search-filter',
+    path: 'my-posts/:searchFilter',
     component: MyPostsComponent
   },
 ];

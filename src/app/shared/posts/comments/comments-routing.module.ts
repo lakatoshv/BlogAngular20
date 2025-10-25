@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import {CommentsListComponent} from './comments-list/comments-list.component';
 import {AddCommentComponent} from './add-comment/add-comment.component';
-import { from } from 'rxjs';
 import { EditCommentComponent } from './edit-comment/edit-comment.component';
-import { AuthGuard } from 'src/app/core/guards/AuthGuard';
+import { AuthGuard } from './../../../core/guards/AuthGuard';
 
 const routes: Routes = [
   {
@@ -18,7 +16,7 @@ const routes: Routes = [
     component: AddCommentComponent
   },
   {
-    path: 'edit/:comment-id',
+    path: 'edit/:commentId',
     canActivate: [AuthGuard],
     component: EditCommentComponent
   }

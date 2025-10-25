@@ -3,10 +3,13 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 mx-auto">
             <a [routerLink]="['/blog/post/add']" class="btn btn-light">Написати пост</a>
-            <div class="text-center" *ngIf="!posts">
-                <b>Дана категорія ще не створена або не має записів</b>
-            </div>
-            <div *ngIf="posts">
+            @if(!posts){
+                <div class="text-center">
+                    <b>Дана категорія ще не створена або не має записів</b>
+                </div>
+            }
+            @if(posts){
+                <div>
                 <form #f="ngForm" [formGroup]="searchForm" (ngSubmit)="search(f.value.search)">
                     <div class="input-group md-form form-sm form-2 pl-0 col-5">
                         <input class="form-control search" type="text" placeholder="Search" aria-label="Search" formControlName="search" id="search">
@@ -46,15 +49,17 @@
                     <a [routerLink]="['/blog/post', post.Id]">
                         <h2 class="post-title" [innerHTML]="post.Title"></h2>
                     </a>
-                    <div class="pull-right" *ngIf="isLoggedIn && post.Author?.Id === user?.Id">
-                        <a class="btn btn-sm text-white btn-primary" [routerLink]="['/blog/post/edit', post.Id]">
-                            <i class="fa fa-edit"></i> Редагувати
-                        </a>
-                        <button type="button" class="btn btn-sm text-white btn-danger" (click)="deleteAction(post.Id)">
-                  <i class="fa fa-trash"></i> 
-                  Видалити
-              </button>
-                    </div>
+                    @if(isLoggedIn && post.Author?.Id === user?.Id) {
+                        <div class="pull-right">
+                            <a class="btn btn-sm text-white btn-primary" [routerLink]="['/blog/post/edit', post.Id]">
+                                <i class="fa fa-edit"></i> Редагувати
+                            </a>
+                            <button type="button" class="btn btn-sm text-white btn-danger" (click)="deleteAction(post.Id)">
+                                <i class="fa fa-trash"></i> 
+                                Видалити
+                            </button>
+                        </div>
+                    }
                     <a [routerLink]="['/blog/post', post.Id]">
                         <img style="width: 100%; height: 300px;" src="{{post.ImageUrl}}" />
                         <h3 class="post-subtitle" [innerHTML]="post.Description"></h3>
@@ -85,6 +90,8 @@
                     <a class="btn btn-primary float-right" routerLink="/blog#">Older Posts &rarr;</a>
                 </div>
             </div>
+            }
+            
         </div>
 
         <div class="col-lg-4 col-md-4 mx-auto sidebar pt-5">

@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from "@a
 import { Observable } from "rxjs";
 import { UsersService } from "../services/users/users-service.service";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard  {
 
     /**

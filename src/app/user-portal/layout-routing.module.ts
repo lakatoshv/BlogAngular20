@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponentComponent } from './layout-component/layout-component.component';
 import { AuthorizationComponent } from './user/authorization/authorization.component';
@@ -11,8 +10,6 @@ import { ChangePasswordComponent } from './personal-info/change-password/change-
 import { ChangePhoneNumberComponent } from './personal-info/change-phone-number/change-phone-number.component';
 import { NotFoundComponent } from '../shared/errors/not-found/not-found.component';
 import { AuthGuard } from '../core/guards/AuthGuard';
-import { PostsModule } from '../shared/posts/posts.module';
-import { ProfileModule } from './profile/profile.module';
 import { ContactsComponent } from './default-pages/contacts/contacts.component';
 import { AboutComponent } from './default-pages/about/about.component';
 
@@ -23,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => PostsModule
+        loadChildren: () => import('../shared/posts/posts.module').then(m => m.PostsModule)
       },
       {
         path: 'about',
@@ -44,7 +41,7 @@ const routes: Routes = [
       {
         path: 'profile',
         canActivate: [AuthGuard],
-        loadChildren: () => ProfileModule
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
       },
       {
         path: 'my-profile',

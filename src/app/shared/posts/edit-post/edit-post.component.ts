@@ -3,21 +3,22 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { PostForm } from '../../../core/forms/posts/PostForm';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { User } from 'src/app/core/models/User';
-import { Post } from 'src/app/core/models/Post';
-import { TinyMCEOptionsObject } from 'src/app/core/models/TinyMCEOptionsObject';
-import { TinyMCEOptions } from 'src/app/core/data/TinyMCEOptions';
-import { Tag } from 'src/app/core/models/Tag';
-import { TagsService } from 'src/app/core/services/posts-services/tags.service';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
-import { Messages } from 'src/app/core/data/Mesages';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { GlobalService } from './../../../core/services/global-service/global-service.service';
+import { User } from './../../../core/models/User';
+import { Post } from './../../../core/models/Post';
+import { TinyMCEOptionsObject } from './../../../core/models/TinyMCEOptionsObject';
+import { TinyMCEOptions } from './../../../core/data/TinyMCEOptions';
+import { Tag } from './../../../core/models/Tag';
+import { TagsService } from './../../../core/services/posts-services/tags.service';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
+import { Messages } from './../../../core/data/Mesages';
 
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  styleUrls: ['./edit-post.component.css'],
+  standalone: false
 })
 export class EditPostComponent implements OnInit {
   /**
@@ -101,14 +102,14 @@ export class EditPostComponent implements OnInit {
    * @inheritdoc
    */
   ngOnInit() {
-    const postIdStr = this._globalService.getRouteParam('post-id', this._activatedRoute);
+    const postIdStr = this._globalService.getRouteParam('postId', this._activatedRoute);
     if(postIdStr !== null) {
       this._postId = parseInt(postIdStr, undefined);
     }
 
     this._activatedRoute.params.subscribe(
       (params: Params) => {
-        this._postId = parseInt(params['post-id'], undefined);
+        this._postId = parseInt(params['postId'], undefined);
         this._checkIfUserIsLoggedIn();
         this._getPost();
         this._getTags();

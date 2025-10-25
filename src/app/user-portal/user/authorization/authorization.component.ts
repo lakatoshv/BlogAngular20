@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AuthorizationForm } from 'src/app/core/forms/user/AuthorizationForm';
+import { AuthorizationForm } from './../../../core/forms/user/AuthorizationForm';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.css']
+  styleUrls: ['./authorization.component.css'],
+  standalone: false
 })
 export class AuthorizationComponent implements OnInit {
   /**

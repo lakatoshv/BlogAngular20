@@ -2,20 +2,21 @@ import { GeneralServiceService } from './../../../core/services/general-service.
 import { PostsService } from './../../../core/services/posts-services/posts.service';
 import { PageInfo } from './../../../core/models/PageInfo';
 import { Component, OnInit } from '@angular/core';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { SearchForm } from 'src/app/core/forms/SearchForm';
+import { GlobalService } from './../../../core/services/global-service/global-service.service';
+import { SearchForm } from './../../../core/forms/SearchForm';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from 'src/app/core/models/User';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { Post } from 'src/app/core/models/Post';
-import { Messages } from 'src/app/core/data/Mesages';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
+import { User } from './../../../core/models/User';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { Post } from './../../../core/models/Post';
+import { Messages } from './../../../core/data/Mesages';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
 
 @Component({
   selector: 'app-my-posts',
   templateUrl: './my-posts.component.html',
-  styleUrls: ['./my-posts.component.scss']
+  styleUrls: ['./my-posts.component.scss'],
+  standalone: false
 })
 export class MyPostsComponent implements OnInit {
   /**
@@ -106,18 +107,18 @@ export class MyPostsComponent implements OnInit {
    * @inheritdoc
    */
   ngOnInit() {
-    this._searchFilter = this._generalService.getRouteParam('search-filter', this._activatedRoute);
+    this._searchFilter = this._generalService.getRouteParam('searchFilter', this._activatedRoute);
 
     this._activatedRoute.params.subscribe(
       (params: Params) => {
-        this._searchFilter = params['search-filter'];
+        this._searchFilter = params['searchFilter'];
         this._checkIfUserIsLoggedIn();
 
         if (this._router.url.includes('/my-posts')) {
           this._userId = this.user?.Id;
           this.isCurrentUserPosts = true;
         } else {
-          this._userId = parseInt(params['user-id'], undefined);
+          this._userId = parseInt(params['userId'], undefined);
           this.isCurrentUserPosts = false;
         }
         this._getPosts();

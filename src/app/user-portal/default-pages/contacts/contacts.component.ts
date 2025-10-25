@@ -5,7 +5,8 @@ import { MessageForm } from '../../../core/forms/Message';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.scss']
+  styleUrls: ['./contacts.component.scss'],
+  standalone: false
 })
 export class ContactsComponent implements OnInit {
   /**

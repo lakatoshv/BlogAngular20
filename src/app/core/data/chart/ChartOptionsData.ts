@@ -1,6 +1,6 @@
 import { ChartData } from './ChartData';
 import { ChartOptions } from '../../models/chart/ChartOptions';
-import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { ScaleType } from '@swimlane/ngx-charts';
 
 /**
  * Chart options default data.

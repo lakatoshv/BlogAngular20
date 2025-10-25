@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ChartOptions } from 'src/app/core/models/chart/ChartOptions';
-import { ChartOptionsData } from 'src/app/core/data/chart/ChartOptionsData';
+import { ChartOptions } from './../../../core/models/chart/ChartOptions';
+import { ChartOptionsData } from './../../../core/data/chart/ChartOptionsData';
 
 @Component({
   selector: 'app-tags-activity-chart',
   templateUrl: './tags-activity-chart.component.html',
-  styleUrls: ['./tags-activity-chart.component.css']
+  styleUrls: ['./tags-activity-chart.component.css'],
+  standalone: false
 })
 export class TagsActivityChartComponent implements OnInit {
   /**

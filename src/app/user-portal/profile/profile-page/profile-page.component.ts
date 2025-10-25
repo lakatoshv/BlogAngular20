@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { GeneralServiceService } from 'src/app/core';
+import { GeneralServiceService } from './../../../core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { User } from 'src/app/core/models/User';
-import { Users } from 'src/app/core/data/UsersList';
-import { Posts } from 'src/app/core/data/PostsList';
-import { Comments } from 'src/app/core/data/CommentsList';
-import { Post } from 'src/app/core/models/Post';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
-import { CustomToastrService } from 'src/app/core/services/custom-toastr.service';
-import { Messages } from 'src/app/core/data/Mesages';
+import { User } from './../../../core/models/User';
+import { Users } from './../../../core/data/UsersList';
+import { Posts } from './../../../core/data/PostsList';
+import { Comments } from './../../../core/data/CommentsList';
+import { Post } from './../../../core/models/Post';
+import { GlobalService } from './../../../core/services/global-service/global-service.service';
+import { UsersService } from './../../../core/services/users/users-service.service';
+import { CustomToastrService } from './../../../core/services/custom-toastr.service';
+import { Messages } from './../../../core/data/Mesages';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css']
+  styleUrls: ['./profile-page.component.css'],
+  standalone: false
 })
 export class ProfilePageComponent implements OnInit {
   /**
@@ -80,7 +81,7 @@ export class ProfilePageComponent implements OnInit {
 
     this._activatedRoute.params.subscribe(
       (params: Params) => {
-        this._userId = parseInt(params['profile-id'], undefined);
+        this._userId = parseInt(params['profileId'], undefined);
         this._checkIfUserIsLoggedIn();
 
         this.isForCurrentUser = this._router.url.includes('/my-profile') || (this._userId !== null && this.user?.Id === this._userId);

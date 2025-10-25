@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalService } from 'src/app/core/services/global-service/global-service.service';
-import { User } from 'src/app/core/models/User';
-import { UsersService } from 'src/app/core/services/users/users-service.service';
+import { GlobalService } from './../../core/services/global-service/global-service.service';
+import { User } from './../../core/models/User';
+import { UsersService } from './../../core/services/users/users-service.service';
 
 @Component({
   selector: 'app-layout-component',
   templateUrl: './layout-component.component.html',
-  styleUrls: ['./layout-component.component.css']
+  styleUrls: ['./layout-component.component.css'],
+  standalone: false
 })
 export class LayoutComponentComponent implements OnInit {
   /**
@@ -38,6 +39,7 @@ export class LayoutComponentComponent implements OnInit {
    * @inheritdoc
    */
   ngOnInit() {
+    debugger
     this.loggedIn = this.usersService.isLoggedIn();
     if (this.loggedIn) {
       this.globalService.resetUserData();

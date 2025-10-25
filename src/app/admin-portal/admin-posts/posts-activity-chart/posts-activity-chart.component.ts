@@ -5,7 +5,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-posts-activity-chart',
   templateUrl: './posts-activity-chart.component.html',
-  styleUrls: ['./posts-activity-chart.component.css']
+  styleUrls: ['./posts-activity-chart.component.css'],
+  standalone: false
 })
 export class PostsActivityChartComponent implements OnInit {
   /**
